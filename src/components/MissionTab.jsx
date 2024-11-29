@@ -19,7 +19,7 @@ const MissionTab = ({ addMission, missions, task, setTask, onUpdate }) => {
                     placeholder="오늘은 무엇을 공부할까요?"
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
-                    className="w-full h-full p-3 rounded-md border-b-2 border-gray-100"
+                    className="w-full h-full p-3 rounded-md border-b-2 border-gray-100 focus:outline-none focus:border-black"
                 />
                 <button
                     type="submit"
