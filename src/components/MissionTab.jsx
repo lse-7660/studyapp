@@ -30,7 +30,7 @@ const MissionTab = ({ addMission, missions, task, setTask, onUpdate }) => {
             </form>
             <div className="flex flex-col gap-10">
                 <MissionList
-                    title="할 일"
+                    title="오늘의 미션"
                     onUpdate={onUpdate}
                     missions={missions.filter((mission) => mission.isDone === false)}
                 />

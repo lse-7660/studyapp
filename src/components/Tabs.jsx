@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import Section from './layout/Section';
-import WeeklyGraph from './WeeklyGraph';
 import MissionTab from './MissionTab';
 import { mockupMission } from '@/data/mockupMission';
+import WeeklyTab from './WeeklyTab';
 
 // Tabs.jsx
 
@@ -33,7 +33,7 @@ const Tabs = () => {
     const tabMenuArr = [
         {
             name: '기록',
-            content: <WeeklyGraph />,
+            content: <WeeklyTab />,
         },
         {
             name: '미션',
@@ -58,7 +58,7 @@ const Tabs = () => {
                         onClick={() => {
                             setCurrentTab(index);
                         }}
-                        className={`py-2 w-1/2 ${currentTab === index ? 'border-b-4' : ''}`}
+                        className={`py-4 w-1/2 ${currentTab === index ? 'border-b-4 border-gray-300' : ''}`}
                     >
                         {item.name}
                     </button>

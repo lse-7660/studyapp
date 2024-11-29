@@ -1,37 +1,23 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useStopwatch } from '@/contexts/stopwatchContext';
+import React from 'react';
 
 const Stopwatch = () => {
-    const [time, setTime] = useState(0);
-    const [isRunning, setIsRunning] = useState(false);
-
-    useEffect(() => {
-        const myStopwatch = isRunning ? setInterval(() => setTime((prev) => prev + 1), 1000) : null;
-
-        return () => clearInterval(myStopwatch);
-    }, [isRunning]);
-
-    const formatStopwatch = (seconds) => {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
-        return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-    };
-
-    const btnStyle = 'flex grow justify-center bg-white py-2 rounded-md active:bg-gray-300';
+    const { state, dispatch, formatStopwatch } = useStopwatch();
+    const btnStyle = 'flex justify-center py-3 rounded-md w-72 bg-white active:bg-gray-300';
 
     return (
-        <div className="flex flex-col ">
-            <h1 className="text-7xl font-bold">{formatStopwatch(time)}</h1>
+        <div className="flex flex-col gap-5 items-center">
+            <h1 className="text-7xl font-bold">{formatStopwatch(state.time)}</h1>
             <div className="flex flex-row gap-5">
                 <button
                     onClick={() => {
-                        setIsRunning(!isRunning);
+                        state.isRunning ? dispatch({ type: 'STOP' }) : dispatch({ type: 'START' });
                     }}
                     className={btnStyle}
                 >
-                    {isRunning ? '공부 끝!' : '공부 시작!'}
+                    {state.isRunning ? '공부 끝!' : '공부 시작!'}
                 </button>
             </div>
         </div>
