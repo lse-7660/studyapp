@@ -1,6 +1,8 @@
 import React from 'react';
 import Container from './layout/Container';
 
+// WeeklyTab.jsx
+
 const WeeklyTab = () => {
     return (
         <div>

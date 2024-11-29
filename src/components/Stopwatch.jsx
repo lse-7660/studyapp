@@ -3,6 +3,8 @@
 import { useStopwatch } from '@/contexts/stopwatchContext';
 import React from 'react';
 
+// Stopwatch.jsx
+
 const Stopwatch = () => {
     const { state, dispatch, formatStopwatch } = useStopwatch();
     const btnStyle = 'flex justify-center py-3 rounded-md w-72 bg-white active:bg-gray-300';

@@ -1,7 +1,6 @@
 'use client';
 import { formatStopwatch, initialState, timerReducer } from '@/states/stopwatchReducer';
-
-const { createContext, useReducer, useEffect, useContext } = require('react');
+import { createContext, useContext, useEffect, useReducer } from 'react';
 
 const StopwatchContext = createContext();
 
