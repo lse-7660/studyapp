@@ -2,6 +2,7 @@
 
 import React from 'react';
 import MissionList from './MissionList';
+import { Plus } from 'lucide-react';
 
 // MissionTab.jsx
 
@@ -12,20 +13,23 @@ const MissionTab = ({ addMission, missions, task, setTask, onUpdate }) => {
     };
     return (
         <div className="flex flex-col gap-10">
-            <form onSubmit={handleSubmit} className="flex flex-row gap-2 h-12">
+            <form onSubmit={handleSubmit} className="relative h-12">
                 <input
                     type="text"
-                    placeholder="무엇을 공부하나요?"
+                    placeholder="오늘은 무엇을 공부할까요?"
                     value={task}
                     onChange={(e) => setTask(e.target.value)}
-                    className="w-4/5 h-full p-3 rounded-md border-2 border-gray-200"
+                    className="w-full h-full p-3 rounded-md border-b-2 border-gray-100"
                 />
                 <button
                     type="submit"
                     disabled={!task}
-                    className={`w-1/5 h-full text-white rounded-md ${task ? 'bg-black' : 'bg-gray-200'}`}
+                    className={`flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full text-white ${
+                        task ? 'bg-black' : 'bg-gray-200'
+                    }`}
                 >
-                    추가
+                    <p className="blind">추가</p>
+                    <Plus />
                 </button>
             </form>
             <div className="flex flex-col gap-10">

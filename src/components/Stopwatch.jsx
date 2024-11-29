@@ -7,11 +7,11 @@ import React from 'react';
 
 const Stopwatch = () => {
     const { state, dispatch, formatStopwatch } = useStopwatch();
-    const btnStyle = 'flex justify-center py-3 rounded-md w-72 bg-white active:bg-gray-300';
+    const btnStyle = 'flex justify-center py-3 rounded-lg w-72 bg-white active:bg-gray-300';
 
     return (
-        <div className="flex flex-col gap-5 items-center">
-            <h1 className="text-7xl font-bold">{formatStopwatch(state.time)}</h1>
+        <div className="flex flex-col gap-5 items-center my-5">
+            <h2 className="number-style text-7xl">{formatStopwatch(state.time)}</h2>
             <div className="flex flex-row gap-5">
                 <button
                     onClick={() => {
