@@ -15,11 +15,7 @@ const Tabs = () => {
 
     useEffect(() => {
         const savedMissions = JSON.parse(localStorage.getItem('missions'));
-        if (savedMissions && savedMissions.length > 0) {
-            setMissions(savedMissions);
-        } else {
-            setMissions(['미션을 추가해 주세요']);
-        }
+        setMissions(savedMissions);
     }, []);
 
     useEffect(() => {
