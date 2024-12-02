@@ -1,21 +1,28 @@
 import React from 'react';
+import { Minus } from 'lucide-react';
 
-const MissionList = ({ missions, title, onUpdate }) => {
+const MissionList = ({ missions, title, onUpdate, onDelete }) => {
     return (
         <div>
             <p className="pb-3">{title}</p>
             <ul className="divide-y">
                 {missions.map((item) => (
-                    <li key={item.id} className="py-3">
-                        <input
-                            type="checkbox"
-                            checked={item.isDone}
-                            onChange={() => {
-                                onUpdate(item.id);
-                            }}
-                            className="mr-4 appearance-none w-5 h-5 rounded border border-gray-300 focus:bg-gray-500 "
-                        />
-                        <span>{item.task}</span>
+                    <li key={item.id} className="flex flex-row justify-between py-3">
+                        <div>
+                            <input
+                                type="checkbox"
+                                checked={item.isDone}
+                                onChange={() => {
+                                    onUpdate(item.id);
+                                }}
+                                className="mr-4 appearance-none w-5 h-5 rounded border border-gray-300 focus:bg-gray-500 "
+                            />
+                            <span>{item.task}</span>
+                        </div>
+                        <button onClick={() => onDelete(item.id)}>
+                            <p className="blind">삭제</p>
+                            <Minus />
+                        </button>
                     </li>
                 ))}
             </ul>

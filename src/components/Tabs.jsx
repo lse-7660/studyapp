@@ -1,22 +1,35 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Section from './layout/Section';
 import MissionTab from './MissionTab';
-import { mockupMission } from '@/data/mockupMission';
 import WeeklyTab from './WeeklyTab';
+import { v4 as uuidv4 } from 'uuid';
 
 // Tabs.jsx
 
 const Tabs = () => {
     const [currentTab, setCurrentTab] = useState(0);
     const [task, setTask] = useState('');
-    const [missions, setMissions] = useState(mockupMission);
+    const [missions, setMissions] = useState([]);
+
+    useEffect(() => {
+        const savedMissions = JSON.parse(localStorage.getItem('missions'));
+        if (savedMissions && savedMissions.length > 0) {
+            setMissions(savedMissions);
+        } else {
+            setMissions(['미션을 추가해 주세요']);
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('missions', JSON.stringify(missions));
+    }, [missions]);
 
     // 미션 추가 함수
     const addMission = () => {
         const newMission = {
-            id: missions.length + 1,
+            id: uuidv4(),
             task: task,
             isDone: false,
         };
@@ -27,6 +40,10 @@ const Tabs = () => {
     // 체크박스 완료 표시
     const onUpdate = (id) => {
         setMissions(missions.map((item) => (item.id === id ? { ...item, isDone: !item.isDone } : item)));
+    };
+
+    const onDelete = (id) => {
+        setMissions(missions.filter((missions) => missions.id !== id));
     };
 
     // 탭메뉴 배열
@@ -44,6 +61,7 @@ const Tabs = () => {
                     task={task}
                     setTask={setTask}
                     onUpdate={onUpdate}
+                    onDelete={onDelete}
                 />
             ),
         },

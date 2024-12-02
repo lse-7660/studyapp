@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
                     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
                 />
             </head>
-            <body id="wrap" className="min-h-screen flex flex-col">
+            <body id="wrap">
                 <Provider>{children}</Provider>
             </body>
         </html>

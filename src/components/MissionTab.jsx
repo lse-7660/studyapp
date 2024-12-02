@@ -6,7 +6,7 @@ import { Plus } from 'lucide-react';
 
 // MissionTab.jsx
 
-const MissionTab = ({ addMission, missions, task, setTask, onUpdate }) => {
+const MissionTab = ({ missions, task, setTask, addMission, onUpdate, onDelete }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         addMission();
@@ -36,11 +36,13 @@ const MissionTab = ({ addMission, missions, task, setTask, onUpdate }) => {
                 <MissionList
                     title="오늘의 미션"
                     onUpdate={onUpdate}
+                    onDelete={onDelete}
                     missions={missions.filter((mission) => mission.isDone === false)}
                 />
                 <MissionList
                     title="완료"
                     onUpdate={onUpdate}
+                    onDelete={onDelete}
                     missions={missions.filter((mission) => mission.isDone === true)}
                 />
             </div>
