@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Section = ({ children }) => {
-    return <section className="p-7 rounded-xl bg-white">{children}</section>;
+    return <section className="px-[20px] py-[30px]  rounded-t-xl bg-white">{children}</section>;
 };
 
 export default Section;
