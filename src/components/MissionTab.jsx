@@ -12,7 +12,7 @@ const MissionTab = ({ missions, task, setTask, addMission, onUpdate, onDelete })
         addMission();
     };
     return (
-        <div className="flex flex-col gap-10">
+        <div className="contents-gap">
             <form onSubmit={handleSubmit} className="relative h-12">
                 <input
                     type="text"
@@ -32,7 +32,7 @@ const MissionTab = ({ missions, task, setTask, addMission, onUpdate, onDelete })
                     <Plus />
                 </button>
             </form>
-            <div className="flex flex-col gap-10">
+            <div className="contents-gap">
                 <MissionList
                     title="오늘의 미션"
                     onUpdate={onUpdate}

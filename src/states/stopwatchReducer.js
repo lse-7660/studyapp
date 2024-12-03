@@ -6,6 +6,7 @@ export const initialState = {
 export const START = 'START';
 export const STOP = 'STOP';
 export const TICK = 'TICK';
+export const RESET = 'RESET';
 
 export const timerReducer = (state, action) => {
     switch (action.type) {
@@ -15,6 +16,8 @@ export const timerReducer = (state, action) => {
             return { ...state, isRunning: false };
         case 'TICK':
             return { ...state, time: state.time + 1 };
+        case 'RESET':
+            return { time: 0, isRunning: false };
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
     }

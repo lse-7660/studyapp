@@ -1,0 +1,20 @@
+.contents-gap {
+    // flex flex-col gap-10
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.contents-wrap {
+    h3 {
+        padding-bottom: 12px;
+        color: gray;
+    }
+    li {
+        // flex flex-row justify-between py-3
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 12px 0;
+    }
+}

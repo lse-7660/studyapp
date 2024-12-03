@@ -1,12 +1,19 @@
 import React from 'react';
 
-const Container = ({ title, children }) => {
+export const Container = ({ title, children }) => {
     return (
-        <div>
+        <div className="contents-wrap">
             <h3>{title}</h3>
-            <div>{children}</div>
+            {children}
         </div>
     );
 };
 
-export default Container;
+export const ContainerCenter = ({ title, children }) => {
+    return (
+        <div className="contents-wrap">
+            <h3 className="text-center">{title}</h3>
+            {children}
+        </div>
+    );
+};
