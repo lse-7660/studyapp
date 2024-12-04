@@ -1,0 +1,9 @@
+// flames animation
+@keyframes flamesUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-110vh);
+    }
+}
