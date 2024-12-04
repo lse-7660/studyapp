@@ -13,7 +13,7 @@ const Header = () => {
     const handleFlameButton = () => {
         const newFlames = Array.from({ length: Math.floor(Math.random() * 12) + 10 }, () => ({
             id: uuidv4(),
-            left: Math.random() * 100,
+            left: Math.random() * 120 - 20,
             duration: Math.random() * 1.5 + 1,
         }));
 
