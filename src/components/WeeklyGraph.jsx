@@ -25,12 +25,13 @@ const WeeklyGraph = () => {
                 toolbar: {
                     show: false,
                 },
+                fontFamily: 'Pretendard',
             },
             plotOptions: {
                 bar: {
                     horizontal: false,
                     columnWidth: '70%',
-                    borderRadius: 5,
+                    borderRadius: 4,
                     dataLabels: {
                         position: 'top',
                     },
@@ -47,9 +48,9 @@ const WeeklyGraph = () => {
                     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
                 },
                 style: {
-                    fontSize: 12,
+                    fontSize: 10,
                     textAnchor: 'middle',
-                    colors: ['#2d2d2d'],
+                    colors: ['#707070'],
                 },
                 offsetY: -20,
             },

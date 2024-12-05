@@ -18,7 +18,7 @@ const MissionList = ({ missions, title, onUpdate, onDelete, blank }) => {
                                     onChange={() => {
                                         onUpdate(item.id);
                                     }}
-                                    className="mr-3 appearance-none w-5 h-5 rounded border border-gray-300 focus:bg-foreground "
+                                    className="mr-3 appearance-none w-5 h-5 rounded border border-gray-300 accent-gray-10 "
                                 />
                                 <p className="text-pretty">{item.task}</p>
                             </div>
