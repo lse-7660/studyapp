@@ -5,6 +5,7 @@ import Section from './layout/Section';
 import MissionTab from './MissionTab';
 import WeeklyTab from './WeeklyTab';
 import { v4 as uuidv4 } from 'uuid';
+import Editor from './Editor';
 
 // Tabs.jsx
 
@@ -64,22 +65,25 @@ const Tabs = () => {
     ];
 
     return (
-        <Section>
-            <div className="flex flex-row gap-5">
+        <div className="sec-g inner rounded-2xl bg-white">
+            <div className="flex flex-row">
                 {tabMenuArr.map((item, index) => (
                     <button
                         key={index}
                         onClick={() => {
                             setCurrentTab(index);
                         }}
-                        className={`py-4 w-1/2 ${currentTab === index ? 'border-b-4 border-gray-300' : ''}`}
+                        className={`py-[14px] w-1/2 ${currentTab === index ? 'border-b-2 border-gray-10' : ''}`}
                     >
-                        {item.name}
+                        <p className="font-body text-gray-7">{item.name}</p>
                     </button>
                 ))}
             </div>
-            <div className="py-10">{tabMenuArr[currentTab].content}</div>
-        </Section>
+            <div className={`${currentTab === 1 ? 'block' : 'hidden'}`}>
+                <Editor />
+            </div>
+            <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>
+        </div>
     );
 };
 

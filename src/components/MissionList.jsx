@@ -18,13 +18,13 @@ const MissionList = ({ missions, title, onUpdate, onDelete, blank }) => {
                                     onChange={() => {
                                         onUpdate(item.id);
                                     }}
-                                    className="mr-3 appearance-none w-5 h-5 rounded border border-gray-300 focus:bg-gray-500 "
+                                    className="mr-3 appearance-none w-5 h-5 rounded border border-gray-300 focus:bg-foreground "
                                 />
                                 <p className="text-pretty">{item.task}</p>
                             </div>
                             <button onClick={() => onDelete(item.id)}>
                                 <p className="blind">삭제</p>
-                                <Minus />
+                                <Minus size={20} />
                             </button>
                         </li>
                     ))}

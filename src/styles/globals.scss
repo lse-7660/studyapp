@@ -6,16 +6,17 @@
 @import 'fonts';
 @import 'layout';
 @import 'animation';
+@import 'effect';
 
 // css variables
 $white: #fff;
 $black: #000;
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #f5f5f5;
+    --foreground: #252525;
 
-    --primary: #246beb;
+    --primary: #252525;
     --secondary: #00ff00;
 
     --gray-5: #f7f7f7;
@@ -32,7 +33,7 @@ $black: #000;
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0a0a0a;
+        --background: #252525;
         --foreground: #ededed;
     }
 }

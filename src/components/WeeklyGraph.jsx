@@ -72,7 +72,7 @@ const WeeklyGraph = () => {
                 max: Math.max(...Object.values(weeklyData)) * 1.2,
                 labels: { show: false },
             },
-            colors: ['#00A6FB'],
+            colors: ['#e0e0e0'],
             fill: {
                 opacity: 1,
             },
