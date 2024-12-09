@@ -27,7 +27,7 @@ const Header = () => {
 
     return (
         <>
-            <div className="flex flex-row px-[40px] pt-[30px] justify-between items-center">
+            <div className=" flex flex-row px-[40px] pt-[30px]  justify-between items-center ">
                 <div>
                     <p className="mb-1 text-sm text-gray-7">{format(new Date(), 'yyyy.MM.dd')}</p>
                     <p className="text-lg font-medium">오늘도 열심히 공부해봐요</p>

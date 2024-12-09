@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Section from './layout/Section';
 import MissionTab from './MissionTab';
 import WeeklyTab from './WeeklyTab';
 import { v4 as uuidv4 } from 'uuid';
@@ -79,7 +78,7 @@ const Tabs = () => {
                     </button>
                 ))}
             </div>
-            <div className={`${currentTab === 1 ? 'block' : 'hidden'}`}>
+            <div className={`${currentTab === 1 ? 'fixed bottom-[20px] right-[20px] z-20 ' : 'hidden'}`}>
                 <Editor />
             </div>
             <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>

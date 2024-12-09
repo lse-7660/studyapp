@@ -21,7 +21,7 @@ const Stopwatch = () => {
         'flex justify-center items-center rounded-lg w-[240px] h-[60px] text-[20px] font-medium text-white bg-gray-10 active:bg-black';
 
     return (
-        <div className="flex flex-col gap-[20px] items-center my-[90px]">
+        <div className="flex flex-col gap-[20px] items-center mt-[70px] mb-[90px]">
             <h2 className="number-style font-display__lg">{formatStopwatch(state.time)}</h2>
             <div className="flex flex-row gap-5">
                 <button onClick={handleStop} className={btnStyle}>
