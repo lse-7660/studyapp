@@ -22,7 +22,7 @@ const Stopwatch = () => {
 
     return (
         <div className="flex flex-col gap-[20px] items-center mt-[70px] mb-[90px]">
-            <h2 className="number-style font-display__lg">{formatStopwatch(state.time)}</h2>
+            <h2 className=" font-display__lg">{formatStopwatch(state.time)}</h2>
             <div className="flex flex-row gap-5">
                 <button onClick={handleStop} className={btnStyle}>
                     {state.isRunning ? '공부 끝!' : '공부 시작!'}

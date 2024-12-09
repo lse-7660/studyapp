@@ -10,7 +10,7 @@ const MissionList = ({ missions, title, onUpdate, onDelete, blank }) => {
             ) : (
                 <ul className="divide-y">
                     {missions.map((item) => (
-                        <li key={item.id} className="flex flex-row gap-4">
+                        <li key={item.id} className="flex flex-row items-start gap-4">
                             <div className="flex flex-row ">
                                 <input
                                     type="checkbox"
@@ -18,9 +18,12 @@ const MissionList = ({ missions, title, onUpdate, onDelete, blank }) => {
                                     onChange={() => {
                                         onUpdate(item.id);
                                     }}
-                                    className="mr-3 appearance-none w-5 h-5 rounded border border-gray-300 accent-gray-10 "
+                                    className="mr-3 mt-[1px] appearance-none w-5 h-5 rounded border border-gray-300 accent-gray-10 "
                                 />
-                                <p className="text-pretty">{item.task}</p>
+                                <div className="">
+                                    <p className="text-pretty">{item.title}</p>
+                                    <p className="text-pretty font-label text-gray-7">{item.details}</p>
+                                </div>
                             </div>
                             <button onClick={() => onDelete(item.id)}>
                                 <p className="blind">삭제</p>

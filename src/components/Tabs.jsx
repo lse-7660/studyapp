@@ -9,9 +9,9 @@ import Editor from './Editor';
 // Tabs.jsx
 
 const Tabs = () => {
-    const [currentTab, setCurrentTab] = useState(0);
-    const [task, setTask] = useState('');
+    const [currentTab, setCurrentTab] = useState(1);
     const [missions, setMissions] = useState([]);
+    const [newMission, setNewMission] = useState({ title: '', details: '' });
 
     useEffect(() => {
         const savedMissions = JSON.parse(localStorage.getItem('missions'));
@@ -24,13 +24,13 @@ const Tabs = () => {
 
     // 미션 추가 함수
     const addMission = () => {
-        const newMission = {
+        const newMissionObj = {
             id: uuidv4(),
-            task: task,
+            ...newMission,
             isDone: false,
         };
-        setMissions([newMission, ...missions]);
-        setTask('');
+        setMissions([newMissionObj, ...missions]);
+        setNewMission({ title: '', details: '' });
     };
 
     // 체크박스 완료 표시
@@ -50,16 +50,7 @@ const Tabs = () => {
         },
         {
             name: '미션',
-            content: (
-                <MissionTab
-                    addMission={addMission}
-                    missions={missions}
-                    task={task}
-                    setTask={setTask}
-                    onUpdate={onUpdate}
-                    onDelete={onDelete}
-                />
-            ),
+            content: <MissionTab missions={missions} onUpdate={onUpdate} onDelete={onDelete} />,
         },
     ];
 
@@ -79,7 +70,7 @@ const Tabs = () => {
                 ))}
             </div>
             <div className={`${currentTab === 1 ? 'fixed bottom-[20px] right-[20px] z-20 ' : 'hidden'}`}>
-                <Editor />
+                <Editor newMission={newMission} setNewMission={setNewMission} addMission={addMission} />
             </div>
             <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>
         </div>

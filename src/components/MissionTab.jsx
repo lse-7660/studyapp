@@ -2,36 +2,12 @@
 
 import React from 'react';
 import MissionList from './MissionList';
-import { Plus } from 'lucide-react';
 
 // MissionTab.jsx
 
-const MissionTab = ({ missions, task, setTask, addMission, onUpdate, onDelete }) => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        addMission();
-    };
+const MissionTab = ({ missions, onUpdate, onDelete }) => {
     return (
         <div className="contents-gap">
-            <form onSubmit={handleSubmit} className="relative h-12">
-                <input
-                    type="text"
-                    placeholder="오늘은 무엇을 공부할까요?"
-                    value={task}
-                    onChange={(e) => setTask(e.target.value)}
-                    className="w-full h-full p-3 rounded-md border-b-2 border-gray-100 focus:outline-none focus:border-gray-10"
-                />
-                <button
-                    type="submit"
-                    disabled={!task}
-                    className={`flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full text-white ${
-                        task ? 'bg-gray-10' : 'bg-gray-200'
-                    }`}
-                >
-                    <p className="blind">추가</p>
-                    <Plus />
-                </button>
-            </form>
             <div className="contents-gap">
                 <MissionList
                     title="오늘의 미션"

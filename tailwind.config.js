@@ -10,12 +10,7 @@ module.exports = {
             fontFamily: {
                 roboto: ['Roboto-Bold'],
             },
-            fontSize: {
-                label: '14px',
-                title: '20px',
-                body: '17px',
-                display: { md: '48px', lg: '64px' },
-            },
+
             colors: {
                 background: 'var(--background)',
                 foreground: 'var(--foreground)',
