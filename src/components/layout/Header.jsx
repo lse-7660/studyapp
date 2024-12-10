@@ -27,17 +27,19 @@ const Header = () => {
 
     return (
         <>
-            <div className=" flex flex-row px-[40px] pt-[30px]  justify-between items-center ">
-                <div>
+            <div className=" flex flex-row inner justify-between items-center ">
+                <div className="pl-[20px]">
                     <p className="mb-1 text-sm text-gray-7">{format(new Date(), 'yyyy.MM.dd')}</p>
                     <p className="text-lg font-medium">오늘도 열심히 공부해봐요</p>
                 </div>
-                <button
-                    onClick={handleFlameButton}
-                    className="relative z-10 w-[80px] h-[80px] text-4xl rounded-full bg-white "
-                >
-                    🔥
-                </button>
+                <div className="pr-[20px]">
+                    <button
+                        onClick={handleFlameButton}
+                        className="relative z-10 w-[80px] h-[80px] text-4xl rounded-full bg-white "
+                    >
+                        🔥
+                    </button>
+                </div>
             </div>
             <Flame flames={flames} removeFlame={removeFlame} />
         </>

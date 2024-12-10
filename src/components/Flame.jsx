@@ -13,7 +13,7 @@ const Flame = ({ flames, removeFlame }) => {
             {flames.map((flame) => (
                 <div
                     key={flame.id}
-                    className="absolute z-10 -bottom-20 text-6xl"
+                    className="absolute z-20 -bottom-20 text-6xl"
                     style={{
                         left: `${flame.left}%`,
                         animation: `flamesUp ${flame.duration}s ease-in forwards`,
