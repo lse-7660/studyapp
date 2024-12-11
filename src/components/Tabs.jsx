@@ -5,22 +5,14 @@ import MissionTab from './MissionTab';
 import WeeklyTab from './WeeklyTab';
 import { v4 as uuidv4 } from 'uuid';
 import Editor from './Editor';
+import { useMissionContext } from '@/contexts/MissionContext';
 
 // Tabs.jsx
 
 const Tabs = () => {
-    const [currentTab, setCurrentTab] = useState(1);
-    const [missions, setMissions] = useState([]);
-    const [newMission, setNewMission] = useState({ title: '', details: '' });
-
-    useEffect(() => {
-        const savedMissions = JSON.parse(localStorage.getItem('missions'));
-        setMissions(savedMissions);
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('missions', JSON.stringify(missions));
-    }, [missions]);
+    const [currentTab, setCurrentTab] = useState(0);
+    const { state, dispatch } = useMissionContext();
+    const { missions, newMission } = state;
 
     // 미션 추가 함수
     const addMission = () => {
@@ -29,17 +21,7 @@ const Tabs = () => {
             ...newMission,
             isDone: false,
         };
-        setMissions([newMissionObj, ...missions]);
-        setNewMission({ title: '', details: '' });
-    };
-
-    // 체크박스 완료 표시
-    const onUpdate = (id) => {
-        setMissions(missions.map((item) => (item.id === id ? { ...item, isDone: !item.isDone } : item)));
-    };
-
-    const onDelete = (id) => {
-        setMissions(missions.filter((missions) => missions.id !== id));
+        dispatchEvent({ type: ' ADD_MISSION', payload: newMissionObj });
     };
 
     // 탭메뉴 배열
@@ -50,7 +32,13 @@ const Tabs = () => {
         },
         {
             name: '미션',
-            content: <MissionTab missions={missions} onUpdate={onUpdate} onDelete={onDelete} />,
+            content: (
+                <MissionTab
+                    missions={missions}
+                    onUpdate={(id) => dispatch({ type: 'TOGGLE_MISSION', payload: id })}
+                    onDelete={(id) => dispatch({ type: 'DELETE_MISSION', payload: id })}
+                />
+            ),
         },
     ];
 
@@ -70,7 +58,11 @@ const Tabs = () => {
                 ))}
             </div>
             <div className={`${currentTab === 1 ? 'fixed bottom-[20px] right-[20px] z-20 ' : 'hidden'}`}>
-                <Editor newMission={newMission} setNewMission={setNewMission} addMission={addMission} />
+                <Editor
+                    newMission={newMission}
+                    setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
+                    addMission={addMission}
+                />
             </div>
             <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>
         </div>

@@ -1,19 +1,30 @@
 'use client';
 
+import { useMissionContext } from '@/contexts/MissionContext';
 import { ChevronLeft, PencilLine, Plus } from 'lucide-react';
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const Editor = ({ newMission, setNewMission, addMission }) => {
+const Editor = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { state, dispatch } = useMissionContext();
+    const { newMission = { title: '', details: '' } } = state;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setNewMission((prev) => ({ ...prev, [name]: value }));
+        dispatch({ type: 'SET_NEW_MISSION', payload: { ...newMission, [name]: value } });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addMission();
+        dispatch({
+            type: 'ADD_MISSION',
+            payload: {
+                id: uuidv4(),
+                ...newMission,
+                isDone: false,
+            },
+        });
         setIsModalOpen(false);
     };
 

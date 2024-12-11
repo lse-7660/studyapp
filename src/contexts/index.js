@@ -1,8 +1,13 @@
 import React from 'react';
 import { StopwatchProvider } from './stopwatchContext';
+import { MissionProvider } from './MissionContext';
 
 const Provider = ({ children }) => {
-    return <StopwatchProvider>{children}</StopwatchProvider>;
+    return (
+        <MissionProvider>
+            <StopwatchProvider>{children}</StopwatchProvider>
+        </MissionProvider>
+    );
 };
 
 export default Provider;
