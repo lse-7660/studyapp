@@ -43,7 +43,7 @@ const Tabs = () => {
     ];
 
     return (
-        <div className="sec-g inner rounded-2xl bg-white">
+        <div className="relative z-20 min-h-screen sec-g inner rounded-2xl bg-white">
             <div className="flex flex-row">
                 {tabMenuArr.map((item, index) => (
                     <button
