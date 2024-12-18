@@ -4,7 +4,6 @@ import { format } from 'date-fns';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Flame from '../Flame';
-import Section, { Section2 } from './Section';
 
 // Header.jsx
 
@@ -30,12 +29,12 @@ const Header = () => {
             <div className=" flex flex-row inner justify-between items-center ">
                 <div className="pl-[20px]">
                     <p className="mb-1 text-sm text-gray-7">{format(new Date(), 'yyyy.MM.dd')}</p>
-                    <p className="text-lg font-medium">오늘도 열심히 공부해봐요</p>
+                    <p className=" font-bold">오늘도 열심히 공부해봐요</p>
                 </div>
                 <div className="pr-[20px]">
                     <button
                         onClick={handleFlameButton}
-                        className="relative z-10 w-[80px] h-[80px] text-4xl rounded-full bg-white "
+                        className="relative z-10 w-[80px] h-[80px] text-4xl rounded-full bg-white border-btn"
                     >
                         🔥
                     </button>

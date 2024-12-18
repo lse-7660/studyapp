@@ -9,11 +9,15 @@ const Flame = ({ flames, removeFlame }) => {
         removeFlame(id);
     };
     return (
-        <div className={`absolute h-screen inset-0 ${flames.length > 0 ? 'block' : 'hidden'}`}>
+        <div
+            className={`absolute z-50 h-screen max-w-[390px] overflow-hidden inset-0 ${
+                flames.length > 0 ? 'block' : 'hidden'
+            }`}
+        >
             {flames.map((flame) => (
                 <div
                     key={flame.id}
-                    className="absolute z-20 -bottom-20 text-6xl"
+                    className="absolute  -bottom-20 text-6xl"
                     style={{
                         left: `${flame.left}%`,
                         animation: `flamesUp ${flame.duration}s ease-in forwards`,

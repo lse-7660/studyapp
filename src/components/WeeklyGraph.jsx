@@ -8,7 +8,7 @@ const WeeklyGraph = () => {
     const { weeklyData } = useStopwatch();
 
     const MIN_BAR_HEIGHT = 20;
-    const chartHeight = 200;
+    const chartHeight = 250;
     const maxDataValue = Math.max(...Object.values(weeklyData));
     const chartScalingFactor = chartHeight / (maxDataValue || 1);
 

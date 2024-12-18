@@ -5,12 +5,14 @@ import React from 'react';
 
 const MainPage = () => {
     return (
-        <div className=" min-h-screen bg-gray-1 ">
-            <div className="sticky top-0">
-                <Header />
-                <StopWatch />
+        <div className=" min-h-screen  ">
+            <div className="max-w-[390px] m-auto  bg-gray-1">
+                <div className=" sticky top-0  ">
+                    <Header />
+                    <StopWatch />
+                </div>
+                <Tabs />
             </div>
-            <Tabs />
         </div>
     );
 };

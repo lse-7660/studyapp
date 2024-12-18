@@ -35,7 +35,9 @@ export default function RootLayout({ children }) {
                 />
             </head>
             <body id="wrap">
-                <Provider>{children}</Provider>
+                <Provider>
+                    <div>{children}</div>
+                </Provider>
             </body>
         </html>
     );

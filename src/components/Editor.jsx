@@ -50,7 +50,7 @@ const Editor = () => {
                 onClick={() => {
                     setIsModalOpen(true);
                 }}
-                className="w-[72px] h-[72px] center rounded-full glass__btn glass-gray-2 "
+                className="w-[72px] h-[72px] center rounded-full border-btn glass__btn glass-gray-2 "
             >
                 <p className="blind">미션 추가</p>
                 <PencilLine size={32} />

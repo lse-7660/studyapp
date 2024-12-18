@@ -1,5 +1,4 @@
 .glass {
-    border: 1px solid rgba(240, 240, 240, 0.18);
     &__btn {
         backdrop-filter: blur(6px);
         -webkit-backdrop-filter: blur(6px);
@@ -8,9 +7,13 @@
         backdrop-filter: blur(20px);
     }
     &-gray-2 {
-        background: #f0f0f080;
+        background: #f0f0f066;
     }
     &-gray-10 {
-        background: #25252580;
+        background: #25252566;
     }
+}
+
+.border-btn {
+    border: 1px solid rgba(240, 240, 240, 0.5);
 }

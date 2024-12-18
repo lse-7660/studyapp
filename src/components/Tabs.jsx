@@ -53,7 +53,13 @@ const Tabs = () => {
                         }}
                         className={`py-[14px] w-1/2 ${currentTab === index ? 'border-b-2 border-gray-10' : ''}`}
                     >
-                        <p className="font-body text-gray-7">{item.name}</p>
+                        <p
+                            className={`font-body  ${
+                                currentTab === index ? 'text-gray-10 font-medium' : 'text-gray-7'
+                            }`}
+                        >
+                            {item.name}
+                        </p>
                     </button>
                 ))}
             </div>
