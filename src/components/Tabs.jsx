@@ -1,3 +1,5 @@
+// Tabs.jsx
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -43,7 +45,7 @@ const Tabs = () => {
     ];
 
     return (
-        <div className="relative z-20 min-h-screen sec-g inner rounded-2xl bg-white">
+        <div className={`relative z-20 sec-g inner rounded-2xl bg-white ${currentTab === 1 ? 'min-h-screen' : ''}`}>
             <div className="flex flex-row">
                 {tabMenuArr.map((item, index) => (
                     <button
@@ -63,14 +65,15 @@ const Tabs = () => {
                     </button>
                 ))}
             </div>
-            <div className={`${currentTab === 1 ? 'fixed bottom-[20px] right-[20px] z-20 ' : 'hidden'}`}>
+
+            <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>
+            <div className={`${currentTab === 1 ? 'fixed inset-0 max-w-[600px] mx-auto z-20 ' : 'hidden'}`}>
                 <Editor
                     newMission={newMission}
                     setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
                     addMission={addMission}
                 />
             </div>
-            <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>
         </div>
     );
 };

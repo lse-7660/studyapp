@@ -25,7 +25,7 @@ const Header = () => {
     };
 
     return (
-        <>
+        <div className="pt-[30px]">
             <div className=" flex flex-row inner justify-between items-center ">
                 <div className="pl-[20px]">
                     <p className="mb-1 text-sm text-gray-7">{format(new Date(), 'yyyy.MM.dd')}</p>
@@ -41,7 +41,7 @@ const Header = () => {
                 </div>
             </div>
             <Flame flames={flames} removeFlame={removeFlame} />
-        </>
+        </div>
     );
 };
 

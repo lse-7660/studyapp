@@ -5,8 +5,8 @@ import React from 'react';
 
 const MainPage = () => {
     return (
-        <div className=" min-h-screen  ">
-            <div className="max-w-[390px] m-auto  bg-gray-1">
+        <div className="min-h-screen">
+            <div className="max-w-[600px] m-auto  bg-gray-1">
                 <div className=" sticky top-0  ">
                     <Header />
                     <StopWatch />

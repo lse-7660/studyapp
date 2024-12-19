@@ -1,3 +1,5 @@
+// Editor.jsx
+
 'use client';
 
 import { useMissionContext } from '@/contexts/MissionContext';
@@ -50,7 +52,7 @@ const Editor = () => {
                 onClick={() => {
                     setIsModalOpen(true);
                 }}
-                className="w-[72px] h-[72px] center rounded-full border-btn glass__btn glass-gray-2 "
+                className="absolute bottom-5 right-5 w-[72px] h-[72px] center rounded-full border-btn glass__btn glass-gray-2 "
             >
                 <p className="blind">미션 추가</p>
                 <PencilLine size={32} />
@@ -58,8 +60,8 @@ const Editor = () => {
 
             {/* Editor */}
             {isModalOpen && (
-                <div onClick={handleBgClick} className="fixed inset-0 z-30 flex items-center justify-center glass__bg">
-                    <div className="m-[20px] p-[20px] contents-gap h-2/3 rounded-[20px] bg-gray-10 text-white ">
+                <div onClick={handleBgClick} className="fixed inset-0 z-30 flex items-center justify-center  glass__bg">
+                    <div className="m-[20px] p-[20px] contents-gap max-w-[560px] h-2/3 max-h-[560px] rounded-[20px] bg-gray-10 text-white ">
                         <div className="flex justify-between items-center">
                             <button onClick={() => setIsModalOpen(false)} className="text-gray-3 ">
                                 <p className="blind">뒤로 가기</p>
@@ -91,8 +93,8 @@ const Editor = () => {
                                 value={newMission.details}
                                 onChange={handleChange}
                                 onKeyDown={handleKeyDown}
-                                placeholder="어떤 것을 공부하나요?"
-                                className="w-full bg-transparent focus:outline-none"
+                                placeholder="어떤 것을 공부할까요?"
+                                className="w-full  bg-transparent focus:outline-none"
                                 rows={15}
                             ></textarea>
                         </form>

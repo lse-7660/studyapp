@@ -1,9 +1,8 @@
-import localFont from 'next/font/local';
 import '../styles/globals.scss';
 import Provider from '@/contexts';
 
 export const metadata = {
-    title: 'next.js template',
+    title: '불공',
     description: '페이지 설명',
     openGraph: {
         title: '페이지 제목',
