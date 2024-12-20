@@ -7,13 +7,20 @@ import { ChevronLeft, PencilLine, Plus } from 'lucide-react';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const Editor = ({ isModalOpen, setIsModalOpen }) => {
+const Editor = ({ isModalOpen, setIsModalOpen, selectedMission }) => {
     const { state, dispatch } = useMissionContext();
     const { newMission = { title: '', details: '' } } = state;
 
+    const currentMission = selectedMission || newMission;
+
     const handleChange = (e) => {
         const { name, value } = e.target;
-        dispatch({ type: 'SET_NEW_MISSION', payload: { ...newMission, [name]: value } });
+        const updatedMission = { ...currentMission, [name]: value };
+        if (selectedMission) {
+            dispatch({ type: 'EDIT_MISSION', payload: updatedMission });
+        } else {
+            dispatch({ type: 'SET_NEW_MISSION', payload: updatedMission });
+        }
     };
 
     const handleSubmit = (e) => {
@@ -59,20 +66,21 @@ const Editor = ({ isModalOpen, setIsModalOpen }) => {
 
             {/* Editor */}
             {isModalOpen && (
-                <div onClick={handleBgClick} className="fixed inset-0 z-30 flex items-center justify-center  glass__bg">
-                    <div className="m-[20px] p-[20px] contents-gap max-w-[560px] h-2/3 max-h-[560px] rounded-[20px] bg-gray-10 text-white ">
+                <div
+                    onClick={(e) => e.target === e.currentTarget && setIsModalOpen(false)}
+                    className="fixed inset-0 z-30 flex items-center justify-center glass__bg"
+                >
+                    <div className="m-[20px] p-[20px] contents-gap max-w-[560px] h-2/3 max-h-[560px] rounded-[20px] bg-gray-10 text-white">
                         <div className="flex justify-between items-center">
-                            <button onClick={() => setIsModalOpen(false)} className="text-gray-3 ">
-                                <p className="blind">뒤로 가기</p>
+                            <button onClick={() => setIsModalOpen(false)} className="text-gray-3">
                                 <ChevronLeft size={30} />
                             </button>
                             <button
                                 type="submit"
                                 form="missionForm"
-                                disabled={!newMission.title}
-                                className={`${newMission.title ? 'text-gray-3' : 'text-gray-7'}`}
+                                disabled={!currentMission.title}
+                                className={`${currentMission.title ? 'text-gray-3' : 'text-gray-7'}`}
                             >
-                                <p className="blind">미션 추가하기</p>
                                 <Plus size={30} />
                             </button>
                         </div>
@@ -80,20 +88,17 @@ const Editor = ({ isModalOpen, setIsModalOpen }) => {
                             <input
                                 type="text"
                                 name="title"
-                                value={newMission.title}
+                                value={currentMission.title}
                                 onChange={handleChange}
-                                onKeyDown={handleKeyDown}
                                 className="w-full bg-transparent mb-4 font-display__sm focus:outline-none"
                                 autoFocus
                                 required
                             />
                             <textarea
                                 name="details"
-                                value={newMission.details}
+                                value={currentMission.details}
                                 onChange={handleChange}
-                                onKeyDown={handleKeyDown}
-                                placeholder="어떤 것을 공부할까요?"
-                                className="w-full  bg-transparent focus:outline-none"
+                                className="w-full bg-transparent focus:outline-none"
                                 rows={15}
                             ></textarea>
                         </form>
