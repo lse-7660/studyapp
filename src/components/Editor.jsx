@@ -7,8 +7,7 @@ import { ChevronLeft, PencilLine, Plus } from 'lucide-react';
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const Editor = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+const Editor = ({ isModalOpen, setIsModalOpen }) => {
     const { state, dispatch } = useMissionContext();
     const { newMission = { title: '', details: '' } } = state;
 

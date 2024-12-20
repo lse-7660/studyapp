@@ -1,11 +1,11 @@
+// MissionTab.jsx
+
 'use client';
 
 import React from 'react';
 import MissionList from './MissionList';
 
-// MissionTab.jsx
-
-const MissionTab = ({ missions, onUpdate, onDelete }) => {
+const MissionTab = ({ missions, onUpdate, onDelete, setIsModalOpen }) => {
     return (
         <div className="contents-gap">
             <div className="contents-gap">
@@ -14,6 +14,7 @@ const MissionTab = ({ missions, onUpdate, onDelete }) => {
                     onUpdate={onUpdate}
                     onDelete={onDelete}
                     missions={missions.filter((mission) => mission.isDone === false)}
+                    setIsModalOpen={setIsModalOpen}
                     blank={
                         <div className="flex items-center justify-center h-[50px] rounded-md bg-gray-100 ">
                             <p className="text-center text-gray-400">새로운 미션을 추가해 주세요</p>
@@ -25,6 +26,7 @@ const MissionTab = ({ missions, onUpdate, onDelete }) => {
                     onUpdate={onUpdate}
                     onDelete={onDelete}
                     missions={missions.filter((mission) => mission.isDone === true)}
+                    setIsModalOpen={setIsModalOpen}
                 />
             </div>
         </div>

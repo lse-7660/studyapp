@@ -1,8 +1,9 @@
+// Mission List
+
 import React from 'react';
 import { Minus } from 'lucide-react';
 
-// Mission List
-const MissionList = ({ missions, title, onUpdate, onDelete, blank }) => {
+const MissionList = ({ missions, title, onUpdate, onDelete, setIsModalOpen, blank }) => {
     return (
         <div className="contents-wrap">
             <h3>{title}</h3>
@@ -12,7 +13,12 @@ const MissionList = ({ missions, title, onUpdate, onDelete, blank }) => {
                 <ul className="divide-y">
                     {missions.map((item) => (
                         <li key={item.id} className="flex flex-row items-start gap-4">
-                            <div className="flex flex-row gap-3 items-start ">
+                            <div
+                                onClick={() => {
+                                    setIsModalOpen(true);
+                                }}
+                                className="flex flex-row gap-3 items-start "
+                            >
                                 <input
                                     type="checkbox"
                                     checked={item.isDone}

@@ -16,6 +16,8 @@ const Tabs = () => {
     const { state, dispatch } = useMissionContext();
     const { missions, newMission } = state;
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     // 미션 추가 함수
     const addMission = () => {
         const newMissionObj = {
@@ -39,6 +41,7 @@ const Tabs = () => {
                     missions={missions}
                     onUpdate={(id) => dispatch({ type: 'TOGGLE_MISSION', payload: id })}
                     onDelete={(id) => dispatch({ type: 'DELETE_MISSION', payload: id })}
+                    setIsModalOpen={setIsModalOpen}
                 />
             ),
         },
@@ -74,6 +77,8 @@ const Tabs = () => {
             >
                 <div className="pointer-events-auto">
                     <Editor
+                        isModalOpen={isModalOpen}
+                        setIsModalOpen={setIsModalOpen}
                         newMission={newMission}
                         setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
                         addMission={addMission}

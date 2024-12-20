@@ -28,6 +28,8 @@ export const missionReducer = (state, action) => {
             };
         case 'SET_NEW_MISSION':
             return { ...state, newMission: action.payload };
+
+        //  EDIT_MISSION 추가
         default:
             throw new Error(`Unknown action type: ${action.type}`);
     }
