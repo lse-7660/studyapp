@@ -67,13 +67,19 @@ const Tabs = () => {
             </div>
 
             <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>
-            <div className={`${currentTab === 1 ? 'fixed inset-0 max-w-[600px] mx-auto z-20 ' : 'hidden'}`}>
-                <Editor
-                    newMission={newMission}
-                    setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
-                    addMission={addMission}
-                />
-            </div>
+            <aside
+                className={`${
+                    currentTab === 1 ? 'fixed inset-0 max-w-[600px] mx-auto z-20 pointer-events-none ' : 'hidden'
+                }`}
+            >
+                <div className="pointer-events-auto">
+                    <Editor
+                        newMission={newMission}
+                        setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
+                        addMission={addMission}
+                    />
+                </div>
+            </aside>
         </div>
     );
 };

@@ -1,29 +1,11 @@
+// Header.jsx
+
 'use client';
 
 import { format } from 'date-fns';
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import Flame from '../Flame';
+import React from 'react';
 
-// Header.jsx
-
-const Header = () => {
-    const [flames, setFlames] = useState([]);
-
-    const handleFlameButton = () => {
-        const newFlames = Array.from({ length: Math.floor(Math.random() * 12) + 10 }, () => ({
-            id: uuidv4(),
-            left: Math.random() * 120 - 20,
-            duration: Math.random() * 1.5 + 1,
-        }));
-
-        setFlames((prevFlames) => [...prevFlames, ...newFlames]);
-    };
-
-    const removeFlame = (id) => {
-        setFlames((prevFlames) => prevFlames.filter((flame) => flame.id !== id));
-    };
-
+const Header = ({ handleFlameButton }) => {
     return (
         <div className="pt-[30px]">
             <div className=" flex flex-row inner justify-between items-center ">
@@ -40,7 +22,6 @@ const Header = () => {
                     </button>
                 </div>
             </div>
-            <Flame flames={flames} removeFlame={removeFlame} />
         </div>
     );
 };

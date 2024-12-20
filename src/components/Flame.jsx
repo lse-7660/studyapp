@@ -1,19 +1,15 @@
+// Flame.jsx
+
 'use client';
 
 import React from 'react';
-
-// Flame.jsx
 
 const Flame = ({ flames, removeFlame }) => {
     const handleAnimationEnd = (id) => {
         removeFlame(id);
     };
     return (
-        <div
-            className={`absolute z-50 h-screen max-w-[390px] overflow-hidden inset-0 ${
-                flames.length > 0 ? 'block' : 'hidden'
-            }`}
-        >
+        <div className="absolute z-50 h-screen max-w-[600px] mx-auto overflow-hidden inset-0 pointer-events-none">
             {flames.map((flame) => (
                 <div
                     key={flame.id}
