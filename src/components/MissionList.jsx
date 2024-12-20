@@ -3,7 +3,7 @@
 import React from 'react';
 import { Minus } from 'lucide-react';
 
-const MissionList = ({ missions, title, onUpdate, onDelete, setIsModalOpen, blank }) => {
+const MissionList = ({ missions, title, onUpdate, onDelete, onMissionClick, blank }) => {
     return (
         <div className="contents-wrap">
             <h3>{title}</h3>
@@ -15,7 +15,7 @@ const MissionList = ({ missions, title, onUpdate, onDelete, setIsModalOpen, blan
                         <li key={item.id} className="flex flex-row items-start gap-4">
                             <div
                                 onClick={() => {
-                                    setIsModalOpen(true);
+                                    onMissionClick(true);
                                 }}
                                 className="flex flex-row gap-3 items-start "
                             >

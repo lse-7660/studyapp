@@ -29,7 +29,13 @@ export const missionReducer = (state, action) => {
         case 'SET_NEW_MISSION':
             return { ...state, newMission: action.payload };
 
-        //  EDIT_MISSION 추가
+        case 'EDIT_MISSION':
+            return {
+                ...state,
+                missions: state.missions.map((item) =>
+                    item.id === action.payload.id ? { ...item, ...action.payload.data } : item
+                ),
+            };
         default:
             throw new Error(`Unknown action type: ${action.type}`);
     }

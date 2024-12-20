@@ -13,10 +13,11 @@ import { useMissionContext } from '@/contexts/MissionContext';
 
 const Tabs = () => {
     const [currentTab, setCurrentTab] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedMission, setSelectedMission] = useState(null);
+
     const { state, dispatch } = useMissionContext();
     const { missions, newMission } = state;
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     // 미션 추가 함수
     const addMission = () => {
@@ -26,6 +27,12 @@ const Tabs = () => {
             isDone: false,
         };
         dispatchEvent({ type: ' ADD_MISSION', payload: newMissionObj });
+    };
+
+    // 미션 클릭 시 모달 표시
+    const handleMissionClick = (mission) => {
+        setSelectedMission(mission);
+        setIsModalOpen(true);
     };
 
     // 탭메뉴 배열
@@ -41,7 +48,7 @@ const Tabs = () => {
                     missions={missions}
                     onUpdate={(id) => dispatch({ type: 'TOGGLE_MISSION', payload: id })}
                     onDelete={(id) => dispatch({ type: 'DELETE_MISSION', payload: id })}
-                    setIsModalOpen={setIsModalOpen}
+                    onMissionClick={handleMissionClick}
                 />
             ),
         },
@@ -82,6 +89,7 @@ const Tabs = () => {
                         newMission={newMission}
                         setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
                         addMission={addMission}
+                        selectedMission={selectedMission}
                     />
                 </div>
             </aside>
