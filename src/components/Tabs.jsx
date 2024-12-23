@@ -14,7 +14,7 @@ import { useMissionContext } from '@/contexts/MissionContext';
 const Tabs = () => {
     const [currentTab, setCurrentTab] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedMission, setSelectedMission] = useState(null);
+    const [selectedMission, setSelectedMission] = useState();
 
     const { state, dispatch } = useMissionContext();
     const { missions, newMission } = state;
@@ -31,7 +31,10 @@ const Tabs = () => {
 
     // 미션 클릭 시 모달 표시
     const handleMissionClick = (mission) => {
-        setSelectedMission(mission);
+        setSelectedMission({
+            title: mission.title,
+            details: mission.details,
+        });
         setIsModalOpen(true);
     };
 
@@ -89,6 +92,7 @@ const Tabs = () => {
                         newMission={newMission}
                         setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
                         addMission={addMission}
+                        setSelectedMission={setSelectedMission}
                         selectedMission={selectedMission}
                     />
                 </div>

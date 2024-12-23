@@ -2,6 +2,7 @@
 export const initialState = {
     missions: [],
     newMission: { title: '', details: '' },
+    selectedMission: { title: '', details: '' },
 };
 
 export const missionReducer = (state, action) => {
@@ -32,10 +33,9 @@ export const missionReducer = (state, action) => {
         case 'EDIT_MISSION':
             return {
                 ...state,
-                missions: state.missions.map((item) =>
-                    item.id === action.payload.id ? { ...item, ...action.payload.data } : item
-                ),
+                selectedMission: action.payload,
             };
+
         default:
             throw new Error(`Unknown action type: ${action.type}`);
     }

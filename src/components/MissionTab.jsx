@@ -5,7 +5,7 @@
 import React from 'react';
 import MissionList from './MissionList';
 
-const MissionTab = ({ missions, onUpdate, onDelete, setIsModalOpen, onMissionClick }) => {
+const MissionTab = ({ missions, onUpdate, onDelete, onMissionClick }) => {
     return (
         <div className="contents-gap">
             <div className="contents-gap">
