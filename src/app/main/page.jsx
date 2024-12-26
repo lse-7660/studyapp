@@ -5,7 +5,7 @@ import Flame from '@/components/Flame';
 import Header from '@/components/layout/Header';
 import StopWatch from '@/components/Stopwatch';
 import Tabs from '@/components/Tabs';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const MainPage = () => {

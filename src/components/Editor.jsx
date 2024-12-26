@@ -64,10 +64,10 @@ const Editor = ({ isModalOpen, setIsModalOpen, selectedMission, setSelectedMissi
                     setSelectedMission();
                     setIsModalOpen(true);
                 }}
-                className="absolute bottom-5 right-5 w-[72px] h-[72px] center rounded-full border-btn glass__btn glass-gray-2 "
+                className="absolute bottom-5 right-5 w-[80px] h-[80px] center rounded-full border-btn glass__btn glass-gray-2 "
             >
                 <p className="blind">미션 추가</p>
-                <PencilLine size={32} />
+                <PencilLine size={36} />
             </button>
 
             {/* Editor */}

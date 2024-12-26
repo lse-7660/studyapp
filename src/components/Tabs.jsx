@@ -58,8 +58,8 @@ const Tabs = () => {
     ];
 
     return (
-        <div className={`relative z-20 sec-g inner rounded-2xl bg-white ${currentTab === 1 ? 'min-h-screen' : ''}`}>
-            <div className="flex flex-row">
+        <div className="relative min-h-screen z-20 px-[20px] rounded-2xl bg-white">
+            <div className="flex flex-row sticky top-0 pt-[30px] pb-[60px] bg-white">
                 {tabMenuArr.map((item, index) => (
                     <button
                         key={index}
