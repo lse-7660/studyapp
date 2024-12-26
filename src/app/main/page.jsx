@@ -27,11 +27,12 @@ const MainPage = () => {
 
     return (
         <div className="min-h-screen">
-            <div className="max-w-[600px] m-auto  bg-gray-1">
+            <div className="relative max-w-[600px] m-auto  bg-gray-1">
                 <div className=" sticky top-0  ">
                     <Header handleFlameButton={handleFlameButton} />
                     <StopWatch />
                 </div>
+
                 <Tabs />
             </div>
             <Flame flames={flames} removeFlame={removeFlame} />

@@ -26,7 +26,7 @@ const Tabs = () => {
             ...newMission,
             isDone: false,
         };
-        dispatchEvent({ type: ' ADD_MISSION', payload: newMissionObj });
+        dispatch({ type: ' ADD_MISSION', payload: newMissionObj });
     };
 
     // 미션 클릭 시 모달 표시
@@ -58,7 +58,7 @@ const Tabs = () => {
     ];
 
     return (
-        <div className="relative min-h-screen z-20 px-[20px] rounded-2xl bg-white">
+        <div className="relative z-20 w-full max-w-[600px] min-h-screen px-[20px] rounded-2xl bg-white ease-in-out">
             <div className="flex flex-row sticky top-0 pt-[30px] pb-[60px] bg-white">
                 {tabMenuArr.map((item, index) => (
                     <button
@@ -90,7 +90,7 @@ const Tabs = () => {
                         isModalOpen={isModalOpen}
                         setIsModalOpen={setIsModalOpen}
                         newMission={newMission}
-                        setNewMission={(mission) => dispatchEvent({ type: 'SET_NEW_MISSION', payload: mission })}
+                        setNewMission={(mission) => dispatch({ type: 'SET_NEW_MISSION', payload: mission })}
                         addMission={addMission}
                         setSelectedMission={setSelectedMission}
                         selectedMission={selectedMission}
