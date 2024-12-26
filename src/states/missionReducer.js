@@ -33,7 +33,9 @@ export const missionReducer = (state, action) => {
         case 'EDIT_MISSION':
             return {
                 ...state,
-                selectedMission: action.payload,
+                missions: state.missions.map((mission) =>
+                    mission.id === action.payload.id ? action.payload : mission
+                ),
             };
 
         default:

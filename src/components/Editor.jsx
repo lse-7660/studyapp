@@ -1,11 +1,6 @@
-// Editor.jsx
-
-'use client';
-
 import { useMissionContext } from '@/contexts/MissionContext';
-import { ChevronLeft, PencilLine, Plus, Save } from 'lucide-react';
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+
+const { Save, Plus, ChevronLeft, PencilLine } = require('lucide-react');
 
 const Editor = ({ isModalOpen, setIsModalOpen, selectedMission, setSelectedMission }) => {
     const { state, dispatch } = useMissionContext();
@@ -15,38 +10,38 @@ const Editor = ({ isModalOpen, setIsModalOpen, selectedMission, setSelectedMissi
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        const updatedMission = { ...currentMission, [name]: value };
-        if (selectedMission) {
-            dispatch({ type: 'EDIT_MISSION', payload: updatedMission });
-        } else {
-            dispatch({ type: 'SET_NEW_MISSION', payload: updatedMission });
-        }
+        setSelectedMission((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
-    // 미션 추가
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({
-            type: 'ADD_MISSION',
-            payload: {
-                id: uuidv4(),
-                ...newMission,
-                isDone: false,
-            },
-        });
+        if (selectedMission) {
+            dispatch({ type: 'EDIT_MISSION', payload: selectedMission });
+        } else {
+            dispatch({
+                type: 'ADD_MISSION',
+                payload: {
+                    id: uuidv4(),
+                    ...newMission,
+                    isDone: false,
+                },
+            });
+        }
         setIsModalOpen(false);
     };
-
-    // 미션 수정 함수
 
     const handleKeyDown = (e) => {
         if (e.key === 'Escape') {
             setIsModalOpen(false);
         }
-        if (!currentMission.title) return;
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            handleSubmit(e);
+            if (currentMission.title) {
+                handleSubmit(e);
+            }
         }
     };
 
@@ -58,10 +53,9 @@ const Editor = ({ isModalOpen, setIsModalOpen, selectedMission, setSelectedMissi
 
     return (
         <>
-            {/* Editor Button */}
             <button
                 onClick={() => {
-                    setSelectedMission();
+                    setSelectedMission(null);
                     setIsModalOpen(true);
                 }}
                 className="absolute bottom-5 right-5 w-[80px] h-[80px] center rounded-full border-btn glass__btn glass-gray-2 "
@@ -70,7 +64,6 @@ const Editor = ({ isModalOpen, setIsModalOpen, selectedMission, setSelectedMissi
                 <PencilLine size={36} />
             </button>
 
-            {/* Editor */}
             {isModalOpen && (
                 <div onClick={handleBgClick} className="fixed inset-0 z-30 flex items-center justify-center glass__bg">
                     <div className="m-[20px] p-[20px] contents-gap max-w-[560px] h-2/3 max-h-[560px] rounded-[20px] bg-gray-10 text-white">
