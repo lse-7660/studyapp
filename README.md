@@ -1,3 +1,21 @@
+## TODO LIST
+
+### 미션
+
+-   선택된 데이터 수정
+    -   모달창에 출력된 selectedMission 수정, 업데이트 기능 수정사항 없으면 우측 상단 버튼 비활성화
+-   주간 기록 막대 색상 바꾸기
+    -   해당 날짜 강조색으로 바꾸기
+-   에디터 애니메이션 추가
+
+    ***
+
+### 완료된 미션
+
+-   모달 창에 선택된 데이터 출력
+-   불꽃 이펙트 추가
+-   에디터 위치 조정
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -24,8 +42,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
