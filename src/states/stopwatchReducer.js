@@ -29,3 +29,10 @@ export const formatStopwatch = (seconds) => {
     const s = seconds % 60;
     return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 };
+
+// export const formatStopwatchMs = (seconds) => {
+//     const m = Math.floor((seconds % 3600) / 60);
+//     const s = seconds % 60;
+//     const ms = seconds * 1000;
+//     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}:${Math.floor((ms % 1000) / 10)}`;
+// };

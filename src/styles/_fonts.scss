@@ -71,14 +71,18 @@ a {
 }
 
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'Roboto-Bold';
     src: url(../../src/app/fonts/Roboto-Bold.woff);
     font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Pretendard-Bold';
+    src: url(../../src/app/fonts/Pretendard-Bold.woff);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url(../../src/app/fonts/Pretendard-Regular.woff);
 }
