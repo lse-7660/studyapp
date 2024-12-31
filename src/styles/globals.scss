@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'reset';
-@import 'fonts';
-@import 'layout';
-@import 'animation';
-@import 'effect';
+@use 'reset';
+@use 'fonts';
+@use 'layout';
+@use 'animation';
+@use 'effect';
 
 // css variables
 $white: #fff;
