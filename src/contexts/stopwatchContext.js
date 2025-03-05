@@ -36,7 +36,9 @@ export const StopwatchProvider = ({ children }) => {
             [currentDay]: weeklyData[currentDay] + time,
         };
         setWeeklyData(updatedWeeklyData);
-        localStorage.setItem(LOCAL_STORORAGE_KEY, JSON.stringify(updatedWeeklyData));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(LOCAL_STORORAGE_KEY, JSON.stringify(updatedWeeklyData));
+        }
     };
 
     useEffect(() => {

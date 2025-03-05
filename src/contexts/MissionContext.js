@@ -19,7 +19,9 @@ export const MissionProvider = ({ children }) => {
 
     // 로컬스토리지에 미션 저장
     useEffect(() => {
-        localStorage.setItem('missions', JSON.stringify(state.missions));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('missions', JSON.stringify(state.missions));
+        }
     }, [state.missions]);
 
     return <MissionContext.Provider value={{ state, dispatch }}>{children}</MissionContext.Provider>;
