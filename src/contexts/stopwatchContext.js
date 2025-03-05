@@ -10,9 +10,11 @@ export const StopwatchProvider = ({ children }) => {
     const [state, dispatch] = useReducer(timerReducer, initialState);
 
     const getWeeklyData = () => {
-        const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
-        if (savedTime) {
-            return JSON.parse(savedTime);
+        if (typeof window !== 'undefined') {
+            const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
+            if (savedTime) {
+                return JSON.parse(savedTime);
+            }
         }
         return {
             일: 0,
@@ -42,9 +44,11 @@ export const StopwatchProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
-        if (savedTime) {
-            setWeeklyData(JSON.parse(savedTime));
+        if (typeof window !== 'undefined') {
+            const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
+            if (savedTime) {
+                setWeeklyData(JSON.parse(savedTime));
+            }
         }
     }, []);
 

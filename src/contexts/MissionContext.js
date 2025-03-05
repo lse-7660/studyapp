@@ -13,8 +13,8 @@ export const MissionProvider = ({ children }) => {
 
     // 로컬스토리지에서 미션 로드
     useEffect(() => {
-        const savedMissions = JSON.parse(localStorage.getItem('missions')) || [];
-        dispatch({ type: 'LOAD_MISSIONS', payload: savedMissions });
+        if (typeof window !== 'undefined'){const savedMissions = JSON.parse(localStorage.getItem('missions')) || [];
+        dispatch({ type: 'LOAD_MISSIONS', payload: savedMissions });}
     }, []);
 
     // 로컬스토리지에 미션 저장
