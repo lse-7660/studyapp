@@ -1,13 +1,12 @@
 @use 'reset';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @use 'fonts';
 @use 'layout';
 @use 'animation';
 @use 'effect';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 // css variables
 $white: #fff;
