@@ -1,8 +1,9 @@
+@use 'reset';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@use 'reset';
 @use 'fonts';
 @use 'layout';
 @use 'animation';
