@@ -1,6 +1,6 @@
 'use client';
-import { formatStopwatch, initialState, timerReducer } from '@/states/stopwatchReducer';
 import { createContext, useContext, useEffect, useReducer, useState } from 'react';
+import { formatStopwatch, initialState, timerReducer } from '@/states/stopwatchReducer';
 
 const LOCAL_STORORAGE_KEY = 'weeklyData';
 
@@ -20,9 +20,10 @@ export const StopwatchProvider = ({ children }) => {
     };
 
     const [weeklyData, setWeeklyData] = useState(defaultWeeklyData);
+    const [isClient, setIsClient] = useState(false); // ✅ 클라이언트 여부 감지
 
-    // 클라이언트에서만 로컬스토리지 접근
     useEffect(() => {
+        setIsClient(true); // ✅ 클라이언트 마운트 시점
         if (typeof window !== 'undefined') {
             const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
             if (savedTime) {
@@ -32,6 +33,8 @@ export const StopwatchProvider = ({ children }) => {
     }, []);
 
     const handleStopSave = (time) => {
+        if (!isClient) return; // ✅ 서버일 경우 막기
+
         const days = ['일', '월', '화', '수', '목', '금', '토'];
         const currentDay = days[new Date().getDay()];
 
@@ -41,10 +44,7 @@ export const StopwatchProvider = ({ children }) => {
         };
 
         setWeeklyData(updatedWeeklyData);
-
-        if (typeof window !== 'undefined') {
-            localStorage.setItem(LOCAL_STORORAGE_KEY, JSON.stringify(updatedWeeklyData));
-        }
+        localStorage.setItem(LOCAL_STORORAGE_KEY, JSON.stringify(updatedWeeklyData));
     };
 
     useEffect(() => {
@@ -68,7 +68,4 @@ export const StopwatchProvider = ({ children }) => {
     );
 };
 
-export const useStopwatch = () => {
-    const context = useContext(StopwatchContext);
-    return context;
-};
+export const useStopwatch = () => useContext(StopwatchContext);
