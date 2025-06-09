@@ -9,23 +9,27 @@ const StopwatchContext = createContext();
 export const StopwatchProvider = ({ children }) => {
     const [state, dispatch] = useReducer(timerReducer, initialState);
 
-    const getWeeklyData = () => {
-        const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
-        if (savedTime) {
-            return JSON.parse(savedTime);
-        }
-        return {
-            일: 0,
-            월: 0,
-            화: 0,
-            수: 0,
-            목: 0,
-            금: 0,
-            토: 0,
-        };
+    const defaultWeeklyData = {
+        일: 0,
+        월: 0,
+        화: 0,
+        수: 0,
+        목: 0,
+        금: 0,
+        토: 0,
     };
 
-    const [weeklyData, setWeeklyData] = useState(getWeeklyData());
+    const [weeklyData, setWeeklyData] = useState(defaultWeeklyData);
+
+    // 클라이언트에서만 로컬스토리지 접근
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
+            if (savedTime) {
+                setWeeklyData(JSON.parse(savedTime));
+            }
+        }
+    }, []);
 
     const handleStopSave = (time) => {
         const days = ['일', '월', '화', '수', '목', '금', '토'];
@@ -35,16 +39,13 @@ export const StopwatchProvider = ({ children }) => {
             ...weeklyData,
             [currentDay]: weeklyData[currentDay] + time,
         };
-        setWeeklyData(updatedWeeklyData);
-        localStorage.setItem(LOCAL_STORORAGE_KEY, JSON.stringify(updatedWeeklyData));
-    };
 
-    useEffect(() => {
-        const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
-        if (savedTime) {
-            setWeeklyData(JSON.parse(savedTime));
+        setWeeklyData(updatedWeeklyData);
+
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(LOCAL_STORORAGE_KEY, JSON.stringify(updatedWeeklyData));
         }
-    }, []);
+    };
 
     useEffect(() => {
         const myStopwatch = state.isRunning ? setInterval(() => dispatch({ type: 'TICK' }), 1000) : null;
@@ -53,7 +54,15 @@ export const StopwatchProvider = ({ children }) => {
     }, [state.isRunning]);
 
     return (
-        <StopwatchContext.Provider value={{ state, dispatch, formatStopwatch, weeklyData, handleStopSave }}>
+        <StopwatchContext.Provider
+            value={{
+                state,
+                dispatch,
+                formatStopwatch,
+                weeklyData,
+                handleStopSave,
+            }}
+        >
             {children}
         </StopwatchContext.Provider>
     );

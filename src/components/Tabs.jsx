@@ -14,12 +14,16 @@ const Tabs = () => {
     const [missions, setMissions] = useState([]);
 
     useEffect(() => {
-        const savedMissions = JSON.parse(localStorage.getItem('missions'));
-        setMissions(savedMissions);
+        if (typeof window !== 'undefined') {
+            const savedMissions = JSON.parse(localStorage.getItem('missions') || '[]');
+            setMissions(savedMissions);
+        }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('missions', JSON.stringify(missions));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('missions', JSON.stringify(missions));
+        }
     }, [missions]);
 
     // 미션 추가 함수
