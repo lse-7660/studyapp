@@ -9,7 +9,7 @@ const Flame = ({ flames, removeFlame }) => {
         removeFlame(id);
     };
     return (
-        <div className={`absolute h-screen inset-0 ${flames.length > 0 ? 'block' : 'hidden'}`}>
+        <div className={`max-w-[390px] mx-auto absolute h-screen inset-0 ${flames.length > 0 ? 'block' : 'hidden'}`}>
             {flames.map((flame) => (
                 <div
                     key={flame.id}

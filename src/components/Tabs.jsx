@@ -77,9 +77,9 @@ const Tabs = () => {
                     </button>
                 ))}
             </div>
-            <div className={`${currentTab === 1 ? 'fixed bottom-[20px] right-[20px] z-20' : 'hidden'}`}>
+            {/* <div className={`${currentTab === 1 ? 'fixed bottom-[20px] right-[20px] z-20' : 'hidden'}`}>
                 <Editor />
-            </div>
+            </div> */}
             <div className={`${currentTab === 1 ? 'pb-[60px]' : ''}`}>{tabMenuArr[currentTab].content}</div>
         </div>
     );
