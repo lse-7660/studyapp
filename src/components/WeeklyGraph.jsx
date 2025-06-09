@@ -2,21 +2,29 @@
 
 import { useStopwatch } from '@/contexts/stopwatchContext';
 import React from 'react';
-import Chart from 'react-apexcharts';
+import dynamic from 'next/dynamic';
+
+// SSR 제외, 클라이언트에서만 렌더링
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const WeeklyGraph = () => {
-    const { weeklyData } = useStopwatch();
+    const { weeklyData = {} } = useStopwatch();
+
+    // 초기값 보장
+    const safeWeeklyData = Object.keys(weeklyData).length
+        ? weeklyData
+        : { 일: 0, 월: 0, 화: 0, 수: 0, 목: 0, 금: 0, 토: 0 };
 
     const MIN_BAR_HEIGHT = 20;
     const chartHeight = 200;
-    const maxDataValue = Math.max(...Object.values(weeklyData));
+    const maxDataValue = Math.max(...Object.values(safeWeeklyData));
     const chartScalingFactor = chartHeight / (maxDataValue || 1);
 
     const chartData = {
         series: [
             {
                 name: '공부 시간 (초)',
-                data: Object.values(weeklyData).map((value) => value + MIN_BAR_HEIGHT / chartScalingFactor),
+                data: Object.values(safeWeeklyData).map((value) => value + MIN_BAR_HEIGHT / chartScalingFactor),
             },
         ],
         options: {
@@ -40,7 +48,7 @@ const WeeklyGraph = () => {
             dataLabels: {
                 enabled: true,
                 formatter: function (value, { dataPointIndex }) {
-                    const realValue = Object.values(weeklyData)[dataPointIndex];
+                    const realValue = Object.values(safeWeeklyData)[dataPointIndex];
                     if (realValue === 0) return '';
                     const seconds = realValue;
                     const hours = Math.floor(seconds / 3600);
@@ -55,22 +63,19 @@ const WeeklyGraph = () => {
                 offsetY: -20,
             },
             xaxis: {
-                categories: Object.keys(weeklyData),
+                categories: Object.keys(safeWeeklyData),
                 labels: {
                     style: {
                         fontSize: '16px',
                     },
                 },
-                // axisBorder: {
-                //     show: false,
-                // },
                 axisTicks: {
                     show: false,
                 },
             },
             yaxis: {
                 min: 0,
-                max: Math.max(...Object.values(weeklyData)) * 1.2,
+                max: maxDataValue * 1.2,
                 labels: { show: false },
             },
             colors: ['#e0e0e0'],
