@@ -20,10 +20,10 @@ export const StopwatchProvider = ({ children }) => {
     };
 
     const [weeklyData, setWeeklyData] = useState(defaultWeeklyData);
-    const [isClient, setIsClient] = useState(false); // ✅ 클라이언트 여부 감지
+    const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        setIsClient(true); // ✅ 클라이언트 마운트 시점
+        setIsClient(true);
         if (typeof window !== 'undefined') {
             const savedTime = localStorage.getItem(LOCAL_STORORAGE_KEY);
             if (savedTime) {
@@ -33,7 +33,7 @@ export const StopwatchProvider = ({ children }) => {
     }, []);
 
     const handleStopSave = (time) => {
-        if (!isClient) return; // ✅ 서버일 경우 막기
+        if (!isClient) return;
 
         const days = ['일', '월', '화', '수', '목', '금', '토'];
         const currentDay = days[new Date().getDay()];
